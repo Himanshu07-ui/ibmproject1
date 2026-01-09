@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamHome | Premium Student Living</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo" onclick="resetView()">
+            <i class="fa-solid fa-house-chimney-window"></i> <span>DreamHome</span>
+        </div>
+        <div class="nav-actions">
+            <button id="themeToggle" class="icon-btn" title="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="login-btn" onclick="openModal('loginModal')">Sign In</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Find Your Next Chapter</h1>
+            <p>Curated Student Housing Near Top Universities</p>
+        </div>
+    </header>
+
+    <section class="search-container">
+        <div class="search-bar">
+            <div class="input-group">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search by city, college, or name...">
+            </div>
+            <div class="filters-group">
+                <select id="cityFilter"><option value="all">City</option></select>
+                <select id="typeFilter"><option value="all">Type</option></select>
+                <select id="collegeFilter"><option value="all">University</option></select>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
+            <p>Finding the best spots for you...</p>
+        </div>
+        
+        <div id="propertyGrid" class="property-grid"></div>
+        
+        <div id="noResults" class="no-results hidden">
+            <i class="fa-solid fa-house-circle-exclamation"></i>
+            <h3>No properties found</h3>
+            <p>Try adjusting your search or filters.</p>
+            <button class="text-btn" onclick="resetView()">Clear all filters</button>
+        </div>
+    </main>
+
+    <div class="bottom-nav">
+        <div class="nav-item active" data-nav="Home" onclick="resetView()">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" data-nav="Saved" onclick="showWishlist()">
+            <i class="fa-solid fa-heart"></i>
+            <span>Saved</span>
+        </div>
+        <div class="nav-item" onclick="openModal('loginModal')">
+            <i class="fa-solid fa-circle-user"></i>
+            <span>Profile</span>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal hidden">
+        <div class="modal-content auth-modal">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Welcome Back</h2>
+            <p>Log in to manage your shortlists</p>
+            <div class="input-stack">
+                <input type="email" placeholder="Email Address">
+                <input type="password" placeholder="Password">
+                <button class="primary-btn">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="propertyModal" class="modal hidden">
+        <div class="modal-content detail-modal" id="propertyModalContent"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
